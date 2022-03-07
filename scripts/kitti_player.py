@@ -148,7 +148,7 @@ if __name__ == "__main__":
                 pose_files.append(oxts_path + "/" + f)
     pose_files.sort()
     poses = []
-    for pose in kitti.get_oxts_packets_and_poses(pose_files):
+    for pose in kitti.load_oxts_packets_and_poses(pose_files):
         poses.append(pose[1])
     # print len(poses)
 
