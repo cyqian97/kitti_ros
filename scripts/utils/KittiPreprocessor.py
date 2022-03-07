@@ -3,7 +3,7 @@
 import numpy as np
 
 # self-implemented XML parser
-from XmlParser import XmlParser
+from .XmlParser import XmlParser
 
 class KittiPreprocessor(object):
     """

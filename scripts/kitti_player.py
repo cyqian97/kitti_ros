@@ -1,7 +1,14 @@
 #!/usr/bin/env python
-
-import thread
 import os
+import sys
+os.chdir('/home/cyqian/autodrive/LidarMore/seg1/src/kitti_ros/scripts')
+# print("#################")
+# print("Python version")
+# print (sys.version)
+# print(os.path.dirname(sys.executable))
+# print("#################")
+
+import _thread
 import sys
 
 import rospy
@@ -23,7 +30,7 @@ import datetime as dt
 import numpy as np
 
 import pykitti.utils as kitti
-# import transform.transform as transform
+sys.path.append('/home/cyqian/autodrive/LidarMore/seg1/src/kitti_ros/scripts')
 import utils.KittiPreprocessor as Preprocessor
 import utils.Publisher as KittiPublisher
 
@@ -69,7 +76,7 @@ if __name__ == "__main__":
     # open a keyboard listen thread on play mode
     if mode == "play":
         try:
-            thread.start_new_thread(on_keyboard, (keyboard_file,))
+            _thread.start_new_thread(on_keyboard, (keyboard_file,))
         except Exception as e:
             print(str(e))
             print("Error: unable to start keyboard listen thread.")
