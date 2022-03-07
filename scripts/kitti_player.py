@@ -70,9 +70,9 @@ if __name__ == "__main__":
     if mode == "play":
         try:
             thread.start_new_thread(on_keyboard, (keyboard_file,))
-        except Exception, e:
-            print str(e)
-            print "Error: unable to start keyboard listen thread."
+        except Exception as e:
+            print(str(e))
+            print("Error: unable to start keyboard listen thread.")
 
     rospy.init_node("kitti_player")
     # Publisher of Kitti raw data: point cloud & image & ground truth
@@ -181,14 +181,14 @@ if __name__ == "__main__":
     while idx < len(bin_files):
         # CTRL+C exit
         if rospy.is_shutdown():
-            print ""
-            print "###########"
-            print "[INFO] ros node had shutdown..."
+            print("")
+            print("###########")
+            print("[INFO] ros node had shutdown...")
             sys.exit(0)
 
         ##TODO read data
         pc = Preprocessor.load_pc_from_bin(bin_path + "/" + bin_files[idx])
-        print "\n[",timestamps[idx],"]","# of Point Clouds:", pc.size
+        print("\n[",timestamps[idx],"]","# of Point Clouds:", pc.size)
 
         image = cv2.imread(img_path + "/" + img_files[idx])
 
@@ -258,7 +258,7 @@ if __name__ == "__main__":
             KittiPublisher.publish_ground_truth_markers(object_marker_pub_, header_, corners.reshape(-1, 3))
             # publish_clusters(pub_clusters, header_, pc, corners.reshape(-1, 3))
         elif use_gt:
-            print "no object in current frame: " + bin_files[idx]
+            print("no object in current frame: " + bin_files[idx])
             # publish empty message
             KittiPublisher.publish_ground_truth_boxes(ground_truth_pub_, header_, None, None, None)
             KittiPublisher.publish_ground_truth_markers(object_marker_pub_, header_, None)
@@ -268,8 +268,8 @@ if __name__ == "__main__":
             publish RGB image
         """
         KittiPublisher.publish_raw_image(pub_img, header_, image)
-        print "###########"
-        print "[INFO] Show image: ",img_files[idx]
+        print("###########")
+        print("[INFO] Show image: ",img_files[idx])
         if mode != "play":
             cv2.imshow(img_window, image)
             cv2.waitKey(0)
@@ -305,10 +305,10 @@ if __name__ == "__main__":
                 else:
                     # CTRL+C exit
                     if rospy.is_shutdown():
-                        print ""
-                        print "###########"
-                        print "[INFO] ros node had shutdown..."
+                        print("")
+                        print("###########")
+                        print("[INFO] ros node had shutdown...")
                         sys.exit(-1)
 
-    print "###########"
-    print "[INFO] All data played..."
+    print("###########")
+    print("[INFO] All data played...")
