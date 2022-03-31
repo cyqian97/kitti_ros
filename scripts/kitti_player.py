@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import os
 import sys
-os.chdir('/home/cyqian/autodrive/LidarMore/seg1/src/kitti_ros/scripts')
+# os.chdir('/home/cyqian/autodrive_ws/LidarMore/track1/src/kitti_ros/scripts')
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 # print("#################")
 # print("Python version")
 # print (sys.version)
@@ -30,7 +31,8 @@ import datetime as dt
 import numpy as np
 
 import pykitti.utils as kitti
-sys.path.append('/home/cyqian/autodrive/LidarMore/seg1/src/kitti_ros/scripts')
+# sys.path.append('/home/cyqian/autodrive_ws/LidarMore/track1/src/kitti_ros/scripts')
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 import utils.KittiPreprocessor as Preprocessor
 import utils.Publisher as KittiPublisher
 

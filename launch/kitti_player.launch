@@ -2,7 +2,7 @@
 
 <launch>
     <!-- Keyboard listener is based on Linux input subsystem -->
-    <arg name="keyboard_file" default="/dev/input/event2" />
+    <arg name="keyboard_file" default="/dev/input/event6" />
 
     <arg name="vel_frame" default="velodyne" />
     <arg name="imu_frame" default="imu" />
