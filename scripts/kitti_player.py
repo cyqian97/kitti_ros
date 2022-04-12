@@ -82,6 +82,9 @@ if __name__ == "__main__":
         except Exception as e:
             print(str(e))
             print("Error: unable to start keyboard listen thread.")
+    
+    if mode == "continuous":
+        KEY_VAL = KEY_SPACE
 
     rospy.init_node("kitti_player")
     # Publisher of Kitti raw data: point cloud & image & ground truth
@@ -97,8 +100,8 @@ if __name__ == "__main__":
     # Publisher of bounding box
     pub_clusters = rospy.Publisher("/kitti/points_clusters", PointCloud2, queue_size=1000000)
 
-    static_tf_sender = tf.TransformBroadcaster();
-    pose_tf_sender = tf.TransformBroadcaster();
+    static_tf_sender = tf.TransformBroadcaster()
+    pose_tf_sender = tf.TransformBroadcaster()
 
     # Shared header for synchronization
     header_ = std_msgs.msg.Header()
@@ -226,7 +229,7 @@ if __name__ == "__main__":
         pose_tf_sender.sendTransform(translation, quaternion,
                                      header_.stamp,
                                      imu_frame_, world_frame_)
-        if mode != "play":
+        if mode == "observation":
             img_window = "Kitti"
             # Image Window Setting
             screen_res = 1280, 720
@@ -279,14 +282,16 @@ if __name__ == "__main__":
         KittiPublisher.publish_raw_image(pub_img, header_, image)
         print("###########")
         print("[INFO] Show image: ",img_files[idx])
-        if mode != "play":
+        if mode == "observation":
             cv2.imshow(img_window, image)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
             idx += 1
         else:
+            # Force continuous playing
             fps.sleep()
             # Keyboard control logic
+            # Force continuous playing
             if playing:
                 if KEY_VAL==KEY_SPACE:
                     playing = False

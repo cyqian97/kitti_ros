@@ -8,8 +8,9 @@
     <arg name="imu_frame" default="imu" />
     <arg name="world_frame" default="world" />
 
-    <arg name="mode" default="play" />
-    <!--<arg name="mode" default="observation" />-->
+    <arg name="mode" default="continuous" />
+    <!-- <arg name="mode" default="play" /> -->
+    <!-- <arg name="mode" default="observation" /> -->
 
     <!-- default 10Hz, the same as LiDAR -->
     <arg name="fps" default="10" />
@@ -26,7 +27,8 @@
     <!--铁路旁-->
     <!--<arg name="kitti_data_path" default="$(find kitti_ros)/../../data/2011_09_26/2011_09_26_drive_0001_sync"/>-->
     <!--城郊道路-->
-    <arg name="kitti_data_path" default="$(find kitti_ros)/../../data/2011_09_26/2011_09_26_drive_0005_sync"/>
+    <arg name="kitti_data_path" default="/dataset/kitti-raw/2011_09_26/2011_09_26_drive_0005_sync"/>
+    <!-- <arg name="kitti_data_path" default="$(find kitti_ros)/../../data/2011_09_26/2011_09_26_drive_0005_sync"/> -->
     <!--城市道路-->
     <!--<arg name="kitti_data_path" default="$(find kitti_ros)/../../data/2011_09_26/2011_09_26_drive_0014_sync"/>-->
     <!--城市道路十字路口-->

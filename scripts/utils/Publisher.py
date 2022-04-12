@@ -97,7 +97,7 @@ class Publisher(object):
 
         msg_boxes = MarkerArray()
 
-        num_boxes = len(corners)/8
+        num_boxes = int(len(corners)/8)
         marker_id = 0
         for i in range(num_boxes):
             corner = corners[i*8:(i+1)*8]
